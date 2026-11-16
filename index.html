@@ -88,6 +88,16 @@
     background: linear-gradient(90deg, var(--accent2), var(--accent)); color: #fff; font-weight: 600;
   }
   .mail:hover { text-decoration: none; opacity: .92; }
+  .donate {
+    text-align: center; margin: 18px auto 22px; max-width: 520px;
+  }
+  .donate p { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+  .donate a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px; border-radius: 999px;
+    border: 1.5px solid var(--accent); color: var(--accent); font-weight: 600; font-size: 15px;
+  }
+  .donate a:hover { background: var(--accent); color: #fff; text-decoration: none; }
   footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
   /* Sprache: ohne JavaScript werden beide Sprachen gezeigt */
   html.js-de [lang="en"], html.js-en [lang="de"] { display: none; }
@@ -129,6 +139,12 @@
     <button type="button" data-lang="en" onclick="setLang('en')">English</button>
   </nav>
 </header>
+
+<div class="donate">
+  <p lang="de">Courier Buddy entsteht komplett ehrenamtlich. Dabei fallen monatliche und jährliche Kosten an – mit einer Unterstützung hilfst du, sie auszugleichen. Danke!</p>
+  <p lang="en">Courier Buddy is built entirely on a volunteer basis, with monthly and yearly running costs. Your support helps cover them – thank you!</p>
+  <a href="https://paypal.me/mmhansen" target="_blank" rel="noopener">☕ Buy me an Avionic :) <span style="font-weight:400">(PayPal)</span></a>
+</div>
 
 <nav class="toc" lang="de">
   <a href="#support">Support</a><a href="#datenschutz">Datenschutz</a><a href="#impressum">Impressum</a>
