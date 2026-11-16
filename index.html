@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Courier Buddy</title>
+<meta name="description" content="Courier Buddy – Support, Datenschutz und Impressum / Support, privacy policy and legal notice.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  :root {
+    --bg: #f5f8fc;
+    --card: #ffffff;
+    --text: #13202f;
+    --muted: #5a6b80;
+    --line: #e2e9f2;
+    --accent: #0a66e0;
+    --accent2: #00b8f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1420;
+      --card: #151f2e;
+      --text: #e8eef6;
+      --muted: #9aabc0;
+      --line: #243246;
+      --accent: #4c9dff;
+      --accent2: #3fd3ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
+  header {
+    text-align: center;
+    padding: 48px 0 24px;
+  }
+  header img {
+    width: 112px; height: 112px;
+    border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(10, 102, 224, .18);
+  }
+  h1 {
+    margin: 18px 0 4px;
+    font-size: 34px;
+    letter-spacing: -.02em;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tagline { color: var(--muted); margin: 0; }
+  nav.lang {
+    display: flex; justify-content: center; gap: 8px; margin: 22px 0 6px;
+  }
+  nav.lang button {
+    font: inherit; font-size: 14px; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card); color: var(--muted);
+    cursor: pointer;
+  }
+  nav.lang button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  nav.toc {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px;
+    font-size: 15px; margin-bottom: 24px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  section.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px 22px;
+    margin: 18px 0;
+  }
+  h2 { font-size: 22px; margin: 0 0 12px; letter-spacing: -.01em; }
+  h3 { font-size: 16px; margin: 20px 0 4px; }
+  p { margin: 0 0 10px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  address { font-style: normal; line-height: 1.7; }
+  .mail {
+    display: inline-block; margin-top: 6px; padding: 10px 18px; border-radius: 12px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent)); color: #fff; font-weight: 600;
+  }
+  .mail:hover { text-decoration: none; opacity: .92; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
+  /* Sprache: ohne JavaScript werden beide Sprachen gezeigt */
+  html.js-de [lang="en"], html.js-en [lang="de"] { display: none; }
+</style>
+<script>
+  // Sprache: ?lang=en / #privacy / Browsersprache – sonst Deutsch
+  (function () {
+    var q = new URLSearchParams(location.search).get("lang");
+    var h = location.hash.toLowerCase();
+    var lang = q || (["#privacy", "#legal-notice", "#support-en"].indexOf(h) >= 0 ? "en"
+               : ["#datenschutz", "#impressum", "#support"].indexOf(h) >= 0 ? "de"
+               : ((navigator.language || "de").toLowerCase().indexOf("de") === 0 ? "de" : "en"));
+    document.documentElement.classList.add("js-" + lang);
+    document.documentElement.lang = lang;
+  })();
+  function setLang(l) {
+    var c = document.documentElement.classList;
+    c.remove("js-de", "js-en"); c.add("js-" + l);
+    document.documentElement.lang = l;
+    document.querySelectorAll("nav.lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false");
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    setLang(document.documentElement.classList.contains("js-en") ? "en" : "de");
+  });
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img src="icon.png" alt="Courier Buddy">
+  <h1>Courier Buddy</h1>
+  <p class="tagline" lang="de">Der Begleiter für Onboard-Kuriere – von einem Kurier, ehrenamtlich entwickelt.</p>
+  <p class="tagline" lang="en">The companion app for on-board couriers – built by a courier, as a volunteer project.</p>
+  <nav class="lang">
+    <button type="button" data-lang="de" onclick="setLang('de')">Deutsch</button>
+    <button type="button" data-lang="en" onclick="setLang('en')">English</button>
+  </nav>
+</header>
+
+<nav class="toc" lang="de">
+  <a href="#support">Support</a><a href="#datenschutz">Datenschutz</a><a href="#impressum">Impressum</a>
+</nav>
+<nav class="toc" lang="en">
+  <a href="#support-en">Support</a><a href="#privacy">Privacy Policy</a><a href="#legal-notice">Legal Notice</a>
+</nav>
+
+<!-- ============ DEUTSCH ============ -->
+
+<section class="card" id="support" lang="de">
+  <h2>Support &amp; Feedback</h2>
+  <p>Fragen, Ideen oder einen Fehler gefunden? Am schnellsten geht es direkt in der App unter
+     <strong>Einstellungen → Anregungen &amp; Fehler melden</strong> – oder per E-Mail:</p>
+  <a class="mail" href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a>
+  <p class="muted" style="margin-top:14px">Courier Buddy ist ein privates, ehrenamtliches Projekt und kein offizielles Angebot der Ontime Courier GmbH. Maßgeblich sind immer die Informationen aus Schulung und Briefing.</p>
+</section>
+
+<section class="card" id="datenschutz" lang="de">
+  <h2>Datenschutzerklärung</h2>
+  <p class="muted">Stand: November 2026</p>
+
+  <h3>Verantwortlicher</h3>
+  <p>Max Hansen, Munkhoog 1, 25980 Munkmarsch, Deutschland<br>
+     E-Mail: <a href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a></p>
+
+  <h3>Grundsatz</h3>
+  <p>Courier Buddy hat keinen eigenen Server, keine Werbung und keine Analyse- oder Tracking-Dienste. Deine Daten bleiben auf deinem iPhone, soweit unten nicht anders beschrieben. Der Entwickler erhält keinen Zugriff darauf.</p>
+
+  <h3>Auf dem iPhone gespeichert</h3>
+  <p>Zugangsdaten zum Ontime-Portal, App-PIN, Profil (Name, Foto), Reisepass- und Visadaten werden im iOS-Schlüsselbund bzw. im geschützten App-Speicher abgelegt; ebenso Transporte, Archiv, Checklisten, CC/TC-Kontakte, Dokumente und Einstellungen. Face ID wird vollständig von iOS ausgewertet – die App erhält nur „erkannt“ oder „nicht erkannt“. Beim Löschen der App werden diese Daten entfernt.</p>
+
+  <h3>Ontime-Portal</h3>
+  <p>Zum Abrufen deiner Transporte und zum Bewerben meldet sich die App mit deinen Zugangsdaten direkt bei <em>onboard.ontimecourier.com</em> an. Die Verbindung besteht unmittelbar zwischen deinem iPhone und dem Portal. Für die Daten im Portal ist die Ontime Courier GmbH verantwortlich.</p>
+
+  <h3>Länderzuordnung</h3>
+  <p>Um Städten ein Land zuzuordnen, übermittelt die App Ortsnamen aus den Transporten an den Kartendienst von Apple (ohne Bezug zu deiner Person).</p>
+
+  <h3>SMS, Anrufe, E-Mails, Kalender</h3>
+  <p>Status-SMS, Anrufe und E-Mails werden über die Apps von iOS verschickt – erst, wenn du selbst auf Senden bzw. Anrufen tippst. Kalendertermine legt die App nur an, wenn du das auslöst und den Zugriff erlaubst.</p>
+
+  <h3>Sicherung</h3>
+  <p>Eine Sicherung ist eine mit deinem Passwort verschlüsselte Datei, die du selbst speicherst oder weitergibst.</p>
+
+  <h3>Anregungen &amp; Fehler melden</h3>
+  <p>Schickst du eine Meldung oder E-Mail, erhält der Entwickler deine E-Mail-Adresse, deinen Text, eine Fall-ID sowie App- und iOS-Version. Die Daten werden nur zur Bearbeitung deines Anliegens genutzt (Art. 6 Abs. 1 lit. b bzw. f DSGVO) und gelöscht, wenn sie dafür nicht mehr nötig sind. Das Postfach wird bei Google (Gmail) geführt.</p>
+
+  <h3>Anonyme Airline-Statistik (freiwillig)</h3>
+  <p>Nur wenn du in der App „Anonym teilen“ einschaltest, wird je eigenem Transport übertragen: Datum (auf die Kalenderwoche gerundet), Start, Ziel und die Kürzel der gebuchten Airlines – keine Buchungscodes, keine Namen, keine Uhrzeiten. Speicherort ist Apples iCloud (CloudKit). Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst sie jederzeit in der App unter Sicherheit → Datenschutz widerrufen und dabei die bisher geteilten Einträge löschen.</p>
+
+  <h3>Diese Website</h3>
+  <p>Diese Seite wird über GitHub Pages (GitHub Inc., USA) bereitgestellt. Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie deine IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen (Art. 6 Abs. 1 lit. f DSGVO). Diese Website setzt selbst keine Cookies und verwendet kein Tracking.</p>
+
+  <h3>Deine Rechte</h3>
+  <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, eine erteilte Einwilligung zu widerrufen. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren. Wende dich dafür an die oben genannte Adresse.</p>
+</section>
+
+<section class="card" id="impressum" lang="de">
+  <h2>Impressum</h2>
+  <p class="muted">Angaben gemäß § 5 DDG und § 18 MStV</p>
+  <address>
+    Max Hansen<br>
+    Munkhoog 1<br>
+    25980 Munkmarsch<br>
+    Deutschland<br>
+    E-Mail: <a href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a>
+  </address>
+  <h3>Verantwortlich für den Inhalt</h3>
+  <p>Max Hansen, Anschrift wie oben</p>
+  <p class="muted">Courier Buddy ist ein privates, ehrenamtliches Projekt und kein offizielles Angebot der Ontime Courier GmbH.</p>
+</section>
+
+<!-- ============ ENGLISH ============ -->
+
+<section class="card" id="support-en" lang="en">
+  <h2>Support &amp; Feedback</h2>
+  <p>Questions, ideas or found a bug? The quickest way is right in the app under
+     <strong>Settings → Suggestions &amp; bug reports</strong> – or by email:</p>
+  <a class="mail" href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a>
+  <p class="muted" style="margin-top:14px">Courier Buddy is a private volunteer project and not an official service of Ontime Courier GmbH. The information from your training and briefing always takes precedence.</p>
+</section>
+
+<section class="card" id="privacy" lang="en">
+  <h2>Privacy Policy</h2>
+  <p class="muted">Last updated: November 2026</p>
+
+  <h3>Controller</h3>
+  <p>Max Hansen, Munkhoog 1, 25980 Munkmarsch, Germany<br>
+     Email: <a href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a></p>
+
+  <h3>Principle</h3>
+  <p>Courier Buddy has no server of its own, no advertising and no analytics or tracking services. Your data stays on your iPhone unless described otherwise below. The developer has no access to it.</p>
+
+  <h3>Stored on your iPhone</h3>
+  <p>Ontime portal credentials, app PIN, profile (name, photo), passport and visa details are stored in the iOS Keychain or protected app storage, as are transports, archive, checklists, CC/TC contacts, documents and settings. Face ID is evaluated entirely by iOS – the app only receives “recognised” or “not recognised”. Deleting the app removes this data.</p>
+
+  <h3>Ontime portal</h3>
+  <p>To fetch your transports and to apply for them, the app signs in to <em>onboard.ontimecourier.com</em> with your credentials. The connection runs directly between your iPhone and the portal. Ontime Courier GmbH is responsible for the data held in the portal.</p>
+
+  <h3>Country lookup</h3>
+  <p>To assign a country to a city, the app sends place names from your transports to Apple’s map service (not linked to you).</p>
+
+  <h3>SMS, calls, email, calendar</h3>
+  <p>Status SMS, calls and emails are sent through the iOS apps – only after you tap send or call yourself. Calendar events are only created when you trigger it and grant access.</p>
+
+  <h3>Backup</h3>
+  <p>A backup is a file encrypted with your password that you store or share yourself.</p>
+
+  <h3>Suggestions &amp; bug reports</h3>
+  <p>If you send a report or email, the developer receives your email address, your message, a case ID and the app and iOS version. This data is used only to handle your request (Art. 6(1)(b) or (f) GDPR) and deleted once no longer needed. The mailbox is hosted by Google (Gmail).</p>
+
+  <h3>Anonymous airline statistics (optional)</h3>
+  <p>Only if you turn on “Share anonymously” in the app, the following is transmitted for each of your own transports: date (rounded to the calendar week), origin, destination and the codes of the booked airlines – no booking codes, no names, no times. It is stored in Apple iCloud (CloudKit). The legal basis is your consent (Art. 6(1)(a) GDPR). You can withdraw it at any time in the app under Security → Privacy and delete the entries shared so far.</p>
+
+  <h3>This website</h3>
+  <p>This page is served via GitHub Pages (GitHub Inc., USA). When you visit it, GitHub processes technically necessary data such as your IP address to deliver the page and protect against abuse (Art. 6(1)(f) GDPR). This website sets no cookies and uses no tracking.</p>
+
+  <h3>Your rights</h3>
+  <p>You have the right of access, rectification, erasure, restriction of processing, data portability and objection, and the right to withdraw consent. You may also lodge a complaint with a data protection supervisory authority. Please contact the address above.</p>
+</section>
+
+<section class="card" id="legal-notice" lang="en">
+  <h2>Legal Notice</h2>
+  <p class="muted">Information pursuant to § 5 DDG and § 18 MStV (German law)</p>
+  <address>
+    Max Hansen<br>
+    Munkhoog 1<br>
+    25980 Munkmarsch<br>
+    Germany<br>
+    Email: <a href="mailto:otc.courier.buddy@gmail.com">otc.courier.buddy@gmail.com</a>
+  </address>
+  <h3>Responsible for content</h3>
+  <p>Max Hansen, address as above</p>
+  <p class="muted">Courier Buddy is a private volunteer project and not an official service of Ontime Courier GmbH.</p>
+</section>
+
+<footer>© 2026 Courier Buddy · Max Hansen</footer>
+</div>
+</body>
+</html>
